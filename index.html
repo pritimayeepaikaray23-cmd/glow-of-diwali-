@@ -1,0 +1,623 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Festival of Lights | Happy Diwali</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #100817;
+  color: #fff1cf;
+  font-family: Georgia, serif;
+  overflow-x: hidden;
+}
+
+:root {
+  --gold: #ffd779;
+  --orange: #ff9d36;
+  --red: #9c202d;
+  --cream: #fff0ce;
+}
+
+/* BACKGROUND */
+
+body {
+  background:
+    radial-gradient(ellipse at 50% 20%, #48202c, transparent 55%),
+    linear-gradient(160deg, #100817, #241020 55%, #100817);
+}
+
+#stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.star {
+  position: absolute;
+  color: #ffdb86;
+  animation: sparkle 2s infinite alternate;
+}
+
+@keyframes sparkle {
+  from { opacity: .2; transform: scale(.7); }
+  to { opacity: 1; transform: scale(1.3); }
+}
+
+/* HERO */
+
+.hero {
+  min-height: 100svh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 35px 18px;
+  overflow: hidden;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+}
+
+.small-title {
+  color: var(--gold);
+  letter-spacing: 5px;
+  font-size: 11px;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+}
+
+h1 {
+  font-size: clamp(48px, 10vw, 90px);
+  line-height: 1.08;
+  color: var(--gold);
+  text-shadow: 0 0 30px #ff9e3655;
+}
+
+h1 span {
+  display: block;
+  color: #fff0ce;
+  font-style: italic;
+}
+
+.subtitle {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #e8d1ad;
+  margin: 25px auto;
+  max-width: 480px;
+}
+
+/* DIYA */
+
+.diya {
+  width: 85px;
+  height: 42px;
+  position: relative;
+  margin: 35px auto 45px;
+  cursor: pointer;
+}
+
+.flame {
+  position: absolute;
+  left: 34px;
+  top: -32px;
+  width: 18px;
+  height: 34px;
+  border-radius: 80% 10% 70% 40%;
+  background: linear-gradient(#fffbd4, #ffc43e, #ff6b18);
+  transform: rotate(45deg);
+  box-shadow: 0 0 20px #ffb52f, 0 0 50px #ff791b;
+  animation: flicker .7s infinite alternate;
+}
+
+@keyframes flicker {
+  to { transform: rotate(55deg) scale(.88); }
+}
+
+.bowl {
+  width: 85px;
+  height: 35px;
+  border-radius: 5px 5px 50px 50px;
+  background: linear-gradient(#ffdc8c, #a34b13);
+  box-shadow: 0 10px 30px #ff951e66;
+}
+
+/* BUTTONS */
+
+button {
+  background: linear-gradient(135deg, #ffdf91, #d79531);
+  color: #35130e;
+  border: 1px solid #ffe7ad;
+  padding: 15px 30px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: .3s;
+}
+
+button:hover {
+  transform: scale(1.06);
+  box-shadow: 0 0 25px #ffbc51;
+}
+
+/* DECORATIVE CORNERS */
+
+.corner {
+  position: absolute;
+  color: #e4ae57;
+  font-size: 35px;
+  opacity: .8;
+}
+
+.top-left { top: 25px; left: 25px; }
+.top-right { top: 25px; right: 25px; }
+.bottom-left { bottom: 25px; left: 25px; }
+.bottom-right { bottom: 25px; right: 25px; }
+
+/* SECTIONS */
+
+section {
+  position: relative;
+  z-index: 1;
+  padding: 85px 20px;
+  text-align: center;
+}
+
+.section-title {
+  font-size: clamp(30px, 6vw, 48px);
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+
+.description {
+  max-width: 600px;
+  margin: auto;
+  line-height: 1.9;
+  color: #e6cfaa;
+  font-size: 16px;
+}
+
+/* DIYA GALLERY */
+
+.diya-gallery {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 55px;
+}
+
+.little-diya {
+  width: 75px;
+  height: 35px;
+  position: relative;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.little-diya .bowl {
+  width: 75px;
+  height: 30px;
+}
+
+.little-diya .flame {
+  left: 30px;
+  top: -25px;
+  width: 15px;
+  height: 26px;
+  opacity: .3;
+  box-shadow: none;
+}
+
+.little-diya.lit .flame {
+  opacity: 1;
+  box-shadow: 0 0 20px #ffb52f, 0 0 45px #ff791b;
+}
+
+.little-diya:hover {
+  transform: translateY(-6px);
+}
+
+/* WISH CARDS */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 850px;
+  margin: 45px auto 0;
+}
+
+.card {
+  padding: 35px 20px;
+  background: linear-gradient(145deg, #49202b, #21111f);
+  border: 1px solid #bd854d;
+  border-radius: 12px;
+}
+
+.card .symbol {
+  font-size: 35px;
+  margin-bottom: 18px;
+}
+
+.card h3 {
+  color: var(--gold);
+  margin-bottom: 13px;
+  font-weight: normal;
+  font-size: 23px;
+}
+
+.card p {
+  color: #e6cfaa;
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+/* GREETING CARD */
+
+.greeting {
+  max-width: 650px;
+  margin: 40px auto 0;
+  padding: 45px 25px;
+  border: 2px solid #d9a94e;
+  outline: 1px solid #d9a94e;
+  outline-offset: 7px;
+  background: linear-gradient(145deg, #541c29, #24101d);
+  display: none;
+  animation: appear 1s ease;
+}
+
+.greeting.show {
+  display: block;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: scale(.85); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.greeting h2 {
+  color: var(--gold);
+  font-size: 36px;
+  margin-bottom: 22px;
+}
+
+.greeting p {
+  color: #ffedcf;
+  line-height: 1.9;
+  font-size: 17px;
+}
+
+/* FINAL */
+
+.final {
+  padding-bottom: 110px;
+}
+
+.final h2 {
+  font-size: clamp(45px, 9vw, 75px);
+  color: var(--gold);
+  text-shadow: 0 0 30px #ffb52f77;
+}
+
+footer {
+  text-align: center;
+  padding: 25px;
+  color: #d3a75d;
+  font-size: 11px;
+  letter-spacing: 3px;
+}
+
+@media(max-width:650px) {
+  .cards {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+  }
+
+  section {
+    padding: 65px 18px;
+  }
+
+  .corner {
+    font-size: 24px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="stars"></div>
+
+<header class="hero">
+
+  <div class="corner top-left">✧</div>
+  <div class="corner top-right">❋</div>
+  <div class="corner bottom-left">❋</div>
+  <div class="corner bottom-right">✧</div>
+
+  <div class="content">
+
+    <div class="small-title">
+      ✨ The Festival of Lights ✨
+    </div>
+
+    <h1>
+      Happy
+      <span>Diwali</span>
+    </h1>
+
+    <div class="diya">
+      <div class="flame"></div>
+      <div class="bowl"></div>
+    </div>
+
+    <p class="subtitle">
+      May every diya illuminate your life
+      with happiness, every sparkle bring
+      a new hope, and every moment become
+      a beautiful memory.
+    </p>
+
+    <button onclick="lightFestival()">
+      LIGHT UP THE FESTIVAL ✨
+    </button>
+
+  </div>
+</header>
+
+<section>
+
+  <div class="small-title">A little light goes a long way</div>
+
+  <h2 class="section-title">
+    Light a Diya, Share a Wish
+  </h2>
+
+  <p class="description">
+    Every little light has a story.
+    Tap the diyas below and let this
+    celebration shine brighter!
+  </p>
+
+  <div class="diya-gallery" id="diyaGallery">
+
+    <div class="little-diya" onclick="lightDiya(this)">
+      <div class="flame"></div><div class="bowl"></div>
+    </div>
+
+    <div class="little-diya" onclick="lightDiya(this)">
+      <div class="flame"></div><div class="bowl"></div>
+    </div>
+
+    <div class="little-diya" onclick="lightDiya(this)">
+      <div class="flame"></div><div class="bowl"></div>
+    </div>
+
+    <div class="little-diya" onclick="lightDiya(this)">
+      <div class="flame"></div><div class="bowl"></div>
+    </div>
+
+    <div class="little-diya" onclick="lightDiya(this)">
+      <div class="flame"></div><div class="bowl"></div>
+    </div>
+
+  </div>
+
+  <p id="diyaMessage" class="description" style="margin-top:35px">
+    Five little lights, endless wishes. 🪔
+  </p>
+
+</section>
+
+<section>
+
+  <div class="small-title">Wishes from the heart</div>
+
+  <h2 class="section-title">
+    May Your Life Be Filled With...
+  </h2>
+
+  <div class="cards">
+
+    <div class="card">
+      <div class="symbol">🌸</div>
+      <h3>Happiness</h3>
+      <p>
+        May your days be filled with
+        laughter, love and countless
+        beautiful moments.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="symbol">🪷</div>
+      <h3>Peace</h3>
+      <p>
+        May your home be filled with
+        harmony, warmth and the
+        comfort of togetherness.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="symbol">✨</div>
+      <h3>Prosperity</h3>
+      <p>
+        May new opportunities bring
+        growth, success and wonderful
+        beginnings.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<section>
+
+  <div class="small-title">A special surprise</div>
+
+  <h2 class="section-title">
+    A Wish Just For You
+  </h2>
+
+  <p class="description">
+    There is a little message waiting
+    to make your celebration brighter.
+  </p>
+
+  <br><br>
+
+  <button onclick="revealWish()">
+    OPEN YOUR GREETING CARD 💌
+  </button>
+
+  <div class="greeting" id="greeting">
+
+    <div style="font-size:40px;margin-bottom:20px">🪔</div>
+
+    <h2>Happy Diwali!</h2>
+
+    <p>
+      May the glow of countless diyas
+      brighten your path, may the
+      sweetness of this festival fill
+      your home, and may hope and
+      kindness always find a place
+      in your heart.
+      <br><br>
+      Wishing you and your loved ones
+      a joyful, peaceful and prosperous
+      Diwali!
+    </p>
+
+    <br>
+    <div style="color:#ffd779;font-style:italic">
+      With warm wishes, always. ❤️
+    </div>
+
+  </div>
+
+</section>
+
+<section class="final">
+
+  <div class="small-title">Celebrate the light</div>
+
+  <h2>Shubh Deepawali!</h2>
+
+  <p class="description" style="margin-top:25px">
+    Let the lights shine brighter,
+    the smiles grow wider,
+    and the blessings multiply.
+    <br><br>
+    May this Diwali be beautiful
+    for you and everyone around you.
+  </p>
+
+  <div style="font-size:50px;margin-top:35px">
+    🪔 ✨ 🪔
+  </div>
+
+</section>
+
+<footer>
+  MADE WITH WARM WISHES · HAPPY DIWALI
+</footer>
+
+<script>
+
+/* STARS */
+
+const stars = document.getElementById("stars");
+
+for(let i=0; i<65; i++) {
+  const star = document.createElement("span");
+  star.className = "star";
+  star.innerHTML = "✦";
+  star.style.left = Math.random()*100 + "%";
+  star.style.top = Math.random()*100 + "%";
+  star.style.fontSize = (5+Math.random()*10) + "px";
+  star.style.animationDelay = Math.random()*3 + "s";
+  stars.appendChild(star);
+}
+
+/* LIGHT DIYAS */
+
+let litCount = 0;
+
+function lightDiya(element) {
+
+  if(!element.classList.contains("lit")) {
+    element.classList.add("lit");
+    litCount++;
+  }
+
+  const message = document.getElementById("diyaMessage");
+
+  if(litCount === 5) {
+    message.innerHTML =
+      "All five diyas are glowing! May your life shine with happiness! ✨";
+  } else {
+    message.innerHTML =
+      litCount + " of 5 diyas glowing. Keep spreading the light! 🪔";
+  }
+
+}
+
+/* LIGHT THE FESTIVAL */
+
+function lightFestival() {
+
+  document.querySelectorAll(".little-diya").forEach(diya => {
+    diya.classList.add("lit");
+  });
+
+  litCount = 5;
+
+  document.getElementById("diyaMessage").innerHTML =
+    "The festival is glowing! Happy Diwali! 🪔✨";
+
+  document.getElementById("diyaGallery").scrollIntoView({
+    behavior: "smooth",
+    block: "center"
+  });
+
+}
+
+/* GREETING CARD */
+
+function revealWish() {
+
+  const card = document.getElementById("greeting");
+
+  card.classList.add("show");
+
+  card.scrollIntoView({
+    behavior: "smooth",
+    block: "center"
+  });
+
+}
+
+</script>
+
+</body>
+      </html>
+
